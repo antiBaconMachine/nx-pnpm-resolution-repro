@@ -1,0 +1,26 @@
+{
+    "$schema": "../../node_modules/nx/schemas/nx-schema.json",
+    "sourceRoot": "apps/my-app",
+    "projectType": "application",
+    "targets": {
+      "build": {
+        "executor": "@nx/webpack:webpack",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "apps/my-app/dist",
+          "main": "apps/my-app/src/main.ts",
+          "target": "node",
+          "tsConfig": "apps/my-app/tsconfig.json",
+          "compiler": "tsc",
+          "webpackConfig": "apps/my-app/webpack.config.js"
+        }
+      },
+      "serve": {
+        "executor": "@nx/js:node",
+        "options": {
+          "buildTarget": "my-app:build"
+        }
+      }
+    }
+  }
+  
