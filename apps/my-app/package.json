@@ -4,9 +4,5 @@
   "main": "src/main.ts",
   "dependencies": {
     "@acme/hello-world": "workspace:^"
-  },
-  "devDependencies": {
-    "@nx/js": "17.2.8",
-    "@nx/webpack": "^17.2.8"
   }
 }

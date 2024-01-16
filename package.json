@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
-    "@nx/js": "17.2.8",
+    "@nx/js": "^17",
+    "@nx/webpack": "^17",
     "@nx/workspace": "17.2.8",
-    "nx": "17.2.8"
+    "nx": "17.2.8",
+    "tslib": "^2.6.2"
   }
 }
