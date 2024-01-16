@@ -4,6 +4,9 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
+  "dependencies": {
+    "@acme/hello-world": "workspace:^"
+  },
   "devDependencies": {
     "@nx/js": "^17",
     "@nx/webpack": "^17",

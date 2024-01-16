@@ -12,6 +12,10 @@ patchedDependencies:
 importers:
 
   .:
+    dependencies:
+      '@acme/hello-world':
+        specifier: workspace:^
+        version: link:libs/hello-world
     devDependencies:
       '@nx/js':
         specifier: ^17
