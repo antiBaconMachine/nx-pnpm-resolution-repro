@@ -10,5 +10,10 @@
     "@nx/workspace": "17.2.8",
     "nx": "17.2.8",
     "tslib": "^2.6.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@nx/js@17.2.8": "patches/@nx__js@17.2.8.patch"
+    }
   }
 }

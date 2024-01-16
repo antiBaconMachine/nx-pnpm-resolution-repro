@@ -1,0 +1,29 @@
+diff --git a/src/executors/node/node.impl.js b/src/executors/node/node.impl.js
+index 946061b55f671c28fd29ec709c0269e8b7b0ab54..45527f805d2eddb4168142eb5401d5cf837ff68a 100644
+--- a/src/executors/node/node.impl.js
++++ b/src/executors/node/node.impl.js
+@@ -1,4 +1,5 @@
+ "use strict";
++console.log('using patched node executor, some extra console logs will show otherwise no changes');
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.nodeExecutor = void 0;
+ const chalk = require("chalk");
+@@ -89,6 +90,7 @@ async function* nodeExecutor(options, context) {
+                         return;
+                     // Run the program
+                     task.promise = new Promise((resolve, reject) => {
++                        console.log('running program with mappings', JSON.stringify(mappings));
+                         task.childProcess = (0, child_process_1.fork)((0, devkit_1.joinPathFragments)(__dirname, 'node-with-require-overrides'), options.args ?? [], {
+                             execArgv: getExecArgv(options),
+                             stdio: [0, 1, 'pipe', 'ipc'],
+@@ -234,6 +236,10 @@ function calculateResolveMappings(context, options) {
+     return dependencies.reduce((m, c) => {
+         if (c.node.type !== 'npm' && c.outputs[0] != null) {
+             m[c.name] = (0, devkit_1.joinPathFragments)(context.root, c.outputs[0]);
++            console.log(`${c.name} gets a special mapping`, {
++                dependency: c,
++                mapping: m[c.name]
++            });
+         }
+         return m;
+     }, {});
