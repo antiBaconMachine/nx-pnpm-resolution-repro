@@ -38,6 +38,8 @@ If there is no output field set on the library project's build target then nx tr
 
 We can see that number 3 is actually what we want, but unfortunately for us when it comes the path mapping that nx generates it arbitrarily picks the [first one](https://github.com/nrwl/nx/blob/42aefd87d0f971e1f3e773ff63bc3ff286351833/packages/js/src/executors/node/node.impl.ts#L324). We can see this causes the incorrect path above.
 
+Note that this incorrect mapping is done regardless of whether there are one or two dependenices, but for some reason it only becomes a problem when the top level one exists.
+
 ## Workaround
 
 We can set the outputs on the library build target to an empty array and this will avoid the issue due to [this line](https://github.com/nrwl/nx/blob/42aefd87d0f971e1f3e773ff63bc3ff286351833/packages/js/src/executors/node/node.impl.ts#L323). A better solution is probably to do as the [cache docs](https://nx.dev/concepts/how-caching-works#what-is-cached) suggest and use
@@ -51,6 +53,8 @@ We can set the outputs on the library build target to an empty array and this wi
     ...
 }
 ```
+
+The `fix` branch demonstrates this mitigated setup. Don't forget to `pnpm install` after checking out.
 
 ## Questions
 
